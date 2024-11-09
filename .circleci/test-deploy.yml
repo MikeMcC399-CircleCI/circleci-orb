@@ -149,30 +149,30 @@ workflows:
             - Install & Persist
       - orb-tools/pack:
           filters: *filters
-      - orb-tools/publish:
-          orb-name: cypress-io/cypress
-          vcs-type: << pipeline.project.type >>
-          pub-type: production
-          enable-pr-comment: false
-          requires:
-            - orb-tools/pack
-            - Standard Npm Example
-            - Custom Node Version Example
-            - Yarn Example
-            - Pnpm Example
-            - Custom Install Example
-            - Wait On Example
-            - Angular Application
-            - Run CT in Parallel
-            - Install & Persist
-            - Run CT Tests in Chrome
-            - Run CT Tests in Firefox
-            - Run CT Tests in Edge
-            - Verify skip-checkout
-          context: circleci-orb-publishing
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v[0-9]+\.[0-9]+\.[0-9]+$/
+      # - orb-tools/publish:
+      #     orb-name: cypress-io/cypress
+      #     vcs-type: << pipeline.project.type >>
+      #     pub-type: production
+      #     enable-pr-comment: false
+      #     requires:
+      #       - orb-tools/pack
+      #       - Standard Npm Example
+      #       - Custom Node Version Example
+      #       - Yarn Example
+      #       - Pnpm Example
+      #       - Custom Install Example
+      #       - Wait On Example
+      #       - Angular Application
+      #       - Run CT in Parallel
+      #       - Install & Persist
+      #       - Run CT Tests in Chrome
+      #       - Run CT Tests in Firefox
+      #       - Run CT Tests in Edge
+      #       - Verify skip-checkout
+      #     context: circleci-orb-publishing
+      #     filters:
+      #       branches:
+      #         ignore: /.*/
+      #       tags:
+      #         only: /^v[0-9]+\.[0-9]+\.[0-9]+$/
 # VS Code Extension Version: 1.5.1
