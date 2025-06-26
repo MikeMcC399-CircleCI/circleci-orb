@@ -116,7 +116,7 @@ workflows:
       #     working-directory: examples/angular-app
       #     cypress-cache-key: cypress-cache-{{ arch }}-{{ checksum "examples/angular-app/package.json" }}
       #     cypress-command: "npx cypress run --component"
-       - cypress/run:
+      - cypress/run:
           name: Verify skip-checkout
           working-directory: examples/angular-app
           cypress-cache-key: cypress-cache-{{ arch }}-{{ checksum "examples/angular-app/package.json" }}
