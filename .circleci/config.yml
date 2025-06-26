@@ -19,8 +19,8 @@ jobs:
             - .cache/Cypress
             - project
   run-ct-tests-in-chrome:
-    docker:
-      - image: cypress/browsers:22.17.0
+    executor:
+      name: cypress/default
     steps:
       - run: echo "This step assumes dependencies were installed using the cypress/install job"
       - attach_workspace:
@@ -40,8 +40,8 @@ jobs:
           working-directory: examples/angular-app
           cypress-command: "npx cypress run --component --browser chrome-for-testing"
   run-ct-tests-in-firefox:
-    docker:
-      - image: cypress/browsers:22.17.0
+    executor:
+      name: cypress/default
     steps:
       - run: echo "This step assumes dependencies were installed using the cypress/install job"
       - attach_workspace:
@@ -128,7 +128,7 @@ workflows:
           working-directory: examples/angular-app
           cypress-cache-key: cypress-cache-{{ arch }}-{{ checksum "examples/angular-app/package.json" }}
           cypress-command: "npx cypress run --component"
-          resource_class: small
+          resource_class: smalls
           pre-steps:
             - checkout
       - install-and-persist:
