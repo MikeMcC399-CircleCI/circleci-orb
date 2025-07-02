@@ -1,6 +1,5 @@
 version: 2.1
 orbs:
-  orb-tools: circleci/orb-tools@12.3.1
   browser-tools: circleci/browser-tools@2.1.2
   cypress: cypress-io/cypress@dev:alpha
 
@@ -122,17 +121,18 @@ workflows:
           name: Verify skip-checkout
           working-directory: examples/angular-app
           cypress-cache-key: cypress-cache-{{ arch }}-{{ checksum "examples/angular-app/package.json" }}
+          skip-checkout: true
           cypress-command: "npx cypress run --component"
           pre-steps:
             - checkout
-      # - cypress/run:
-      #     name: Verify resource_class config works
-      #     working-directory: examples/angular-app
-      #     cypress-cache-key: cypress-cache-{{ arch }}-{{ checksum "examples/angular-app/package.json" }}
-      #     cypress-command: "npx cypress run --component"
-      #     resource_class: smalls
-      #     pre-steps:
-      #       - checkout
+      - cypress/run:
+          name: Verify resource_class config works
+          working-directory: examples/angular-app
+          cypress-cache-key: cypress-cache-{{ arch }}-{{ checksum "examples/angular-app/package.json" }}
+          cypress-command: "npx cypress run --component"
+          resource_class: medium+
+          pre-steps:
+            - checkout
       - install-and-persist:
           name: Install & Persist
       - run-ct-tests-in-chrome:
