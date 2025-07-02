@@ -131,8 +131,6 @@ workflows:
           cypress-cache-key: cypress-cache-{{ arch }}-{{ checksum "examples/angular-app/package.json" }}
           cypress-command: "npx cypress run --component"
           resource_class: medium+
-          pre-steps:
-            - checkout
       - install-and-persist:
           name: Install & Persist
       - run-ct-tests-in-chrome:
