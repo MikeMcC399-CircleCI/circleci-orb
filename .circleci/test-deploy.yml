@@ -224,7 +224,7 @@ workflows:
       - orb-tools/publish:
           name: publish_dev_test
           orb_name: cypress-io/cypress
-          vcs_type: << pipeline.project.type >>
+          vcs_type: github
           pub_type: dev
           enable_pr_comment: false
           requires:
@@ -255,7 +255,7 @@ workflows:
       - orb-tools/publish:
           name: publish_prod
           orb_name: cypress-io/cypress
-          vcs_type: << pipeline.project.type >>
+          vcs_type: github
           pub_type: production
           enable_pr_comment: false
           requires:
